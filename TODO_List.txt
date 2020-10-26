@@ -1,0 +1,12 @@
+
+For next session:
+1.Download and compile clang:
+  https://clang.llvm.org/get_started.html
+  Use gcc 9.3.0
+  You will need to download cmake (I think version 3.17…)
+2.Verify that clang is working well:
+  Try clang (regular compile), and clang format.
+3.Create a new area at github for our project and upload the code there.
+Split into 2 folders, first is llvm-project which will contain the clang code with your changes, and second will contain your own files (like wrapper files).
+4.Try to add some minimal change for the clang-format code and to see that it is working:
+Print your name at the beginning and the end of the generated C++ code.
