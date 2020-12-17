@@ -1,0 +1,9 @@
+#!/bin/bash
+DIR="$(cd "$( dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+cd $DIR;
+yes | cp -R -rf ./libFiles ./RS/;
+
+g++ -o createMainAndUpdateFile $DIR/createMain.cpp;
+mv -f $DIR/createMainAndUpdateFile  $DIR/RS/scripts/;
+yes | cp -rf  ./llvm-project/build/bin/clang-format  $DIR/RS/scripts;
+#"$DIR/RS/simulate";

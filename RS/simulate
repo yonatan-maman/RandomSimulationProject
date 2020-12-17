@@ -1,0 +1,134 @@
+#!/bin/bash
+InstallDIR="$(cd "$( dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)";
+
+echo $InstallDIR;
+rm "$InstallDIR/files" -rf;
+rm "$InstallDIR/debug" -rf;
+mkdir -p "$InstallDIR/debug";
+mkdir -p  "$InstallDIR/files";
+SAVE=false;
+DEBUG=false;
+VERBOSE=false;
+MAX_BOUND_LOOP="x";
+DEST="";
+REPETITIONS=200;
+SourceDIR=$(pwd);
+CWD=$(pwd); 
+EXTENIONS="cpp,h"
+#check if there is both c and cpp files - add warning and explain about extenions
+
+
+#parse command line
+while :; do
+       case $1 in
+           -h|-\?|--help)
+               echo "A tool to simulate the loops in the program.Its output is xml which contain the times that the loop has executed with a rondomally inputs.You have to give this tool an input program with the flag \"--input = example_directory/example/1/2/3/ \".  you can choose the destinion directory with the flag\"--dest = example_directory/example/1/2/3/ \". you also able to save the files of the program with --save-files."    
+               exit
+               ;;
+           --input |-i )
+				shift
+               SourceDIR=${1#* } 
+               ;;
+           --output |-o)
+			   shift
+               DEST=${1#* } 
+               ;;
+           --save |-s)
+               SAVE=true
+               ;;
+           --maxBound |-m )
+			   shift
+               MAX_BOUND_LOOP=${1#* } 
+               ;;
+           --debug |-d )
+               DEBUG=true
+               ;;
+           --verbose |-v )
+               VERBOSE=true
+               ;;
+           --repetitions |-r )
+               shift
+               REPETITIONS=${1#* } 
+               ;;
+           --extenions |-e )
+               shift
+               EXTENIONS=${1#* } 
+               ;;
+           --)             
+               shift
+               break
+               ;;
+           -?*)
+               printf 'WARN: Unknown option (ignored): %s\n' "$1" >&2
+               ;;
+           *)               # Default case: No more options, so break out of the loop.
+               break
+       esac
+       shift
+   done
+
+findExtenion="find "
+IFS=',' read -r -a array <<< "$EXTENIONS"
+for element in "${array[@]}"
+do
+    findExtenion+="-name \*.$element -print -o ";
+done
+findExtenion+="-name \*.cpp -print -name \*.h -print";
+
+if [$DEST = ""]; then 
+	DEST=$SourceDIR 
+	$VERBOSE && echo "output directory is $DEST" ;
+fi
+cd "$SourceDIR";
+
+#add warning if exist other files cpp or c
+
+#create new edited files
+cd $SourceDIR;
+eval "for f in \`$findExtenion\`; do 
+	$VERBOSE && echo \"clang-format \$f to \$InstallDIR/files\" ;
+	\$InstallDIR/scripts/clang-format \$InstallDIR \"\$f\" > \"$InstallDIR/debug/cl_\$(basename -- \$f)\";
+done;";
+
+
+
+cd $InstallDIR;
+
+#copy our project libary files
+$VERBOSE && echo "copy libFiles directory to the files directory";
+cp -R ./libFiles  ./files/;
+
+#create new main file
+$VERBOSE && echo "update the parameters to the original_main function and create new main file with the function main";
+
+./scripts/createMainAndUpdateFile $REPETITIONS $MAX_BOUND_LOOP >> ./debug/_main.cpp;
+
+#remove temp file directory
+rm -rf ./files/temp
+
+#compile the files
+cd ./files/;
+$VERBOSE && echo "compile the files";
+eval "$findExtenion | xargs g++";
+
+#running the program
+cd $CWD;
+$VERBOSE && echo "create output directory";
+mkdir -p $DEST/outputRS;
+cd $DEST/outputRS;
+$VERBOSE && echo "running the created program";
+$InstallDIR/files/a.out > $InstallDIR/debug/mainDebug;
+
+#save the files
+if $SAVE;
+then
+	$VERBOSE && echo "copy the program files to the output directory";
+   cp -R $InstallDIR/files  $DEST/outputRS/
+fi
+
+#delete the debug files
+if ! $DEBUG ;
+then 
+	$VERBOSE && echo "remove debug directory - $InstallDIR/files/debug";
+	rm -rf $InstallDIR/debug;
+fi
