@@ -1,7 +1,4 @@
 
-#include <list>
-#include <map>
-#include <utility>
 #include <string>
 #include <ostream>
 #include "gStatistics.h"
@@ -27,36 +24,21 @@ void printListReturnMaxAndAvarage(std::list<unsigned long>& s,unsigned long int 
 	os << std::endl;
 	
 }
-int g_statistics::addRunningLoop(std::string fileName,unsigned int line,unsigned int column)
+int g_statistics::addRunningLoop(std::string fileName,unsigned int loopLine,unsigned int loopColumn)
 {
-	//std::cout << "addRunningLoop - start " << std::endl;
-	//std::cout << "addRunningLoop - mid1" << std::endl;
-	if(loopBoundMap[{fileName,{line,column}}].empty()){
-		std::list<unsigned long> s;
-		loopBoundMap[{fileName,{line,column}}].push_back(s);
-	}
-	//std::cout << "addRunningLoop - mid2 " << std::endl;
-	(loopBoundMap[{fileName,{line,column}}]).back().push_back(0);
-	//std::cout << "addRunningLoop - end " << std::endl;
+	if(loopBoundMap[{fileName,{loopLine,loopColumn}}].empty())
+		loopBoundMap[{fileName,{loopLine,loopColumn}}].push_back(std::list<unsigned long>());
+	loopBoundMap[{fileName,{loopLine,loopColumn}}].back().push_back(0);
 }
-bool g_statistics::plusplus(std::string fileName,unsigned int line,unsigned int column)
+bool g_statistics::plusplus(std::string fileName,unsigned int loopLine,unsigned int loopColumn)
 {
-	//std::cout << "plusplus - start" << std::endl;
-	//std::cout << "plusplus - mid" << std::endl;
-	int current = ++(loopBoundMap[{fileName,{line,column}}].back().back());
-	return current > maxLoopBound;
-	//std::cout << "plusplus - end" << std::endl;
+	int currentLoopTimes = ++(loopBoundMap[{fileName,{loopLine,loopColumn}}].back().back());
+	return currentLoopTimes > maxLoopBound;
 }
 void g_statistics::nextRunning()
 {
-	//std::cout << "nextRunning start" << std::endl;
-	//std::cout << "addRunningLoop - mid " << std::endl;
 	for (auto it=loopBoundMap.begin(); it!=loopBoundMap.end(); ++it)
-	{
-		std::list<unsigned long> s;
-		it->second.push_back(s);
-	}
-	//std::cout << "addRunningLoop - end " << std::endl;
+		it->second.push_back(std::list<unsigned long>());
 }
 
 void g_statistics::printResults(std::ostream& os)

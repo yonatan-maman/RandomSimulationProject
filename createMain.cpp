@@ -2,91 +2,109 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include <string>
 #include <algorithm>
-#include <limits.h>
 #include "assert.h"
-#define SPACE 32
-
-int main (int argc, char **argv)
+#include "string.h"
+inline void createDefinitionAndFunctionCallAndDeclarition(std::string& function_call,std::string& definition, std::string& declarition , std::string& inputs)
 {
-	std::ifstream inputs("./files/temp/tempInputs");
-	std::string s = std::string(std::istreambuf_iterator<char>(inputs), std::istreambuf_iterator<char>());
-	std::cout << s << std::endl;
-	std::string mainFile =  s.substr(s.find("\n",0)+1,s.find_last_of("-")-1 - s.find("\n",0));
-	std::cout <<"mainFile -"<< mainFile << std::endl;
-	std::rename(("./files/"+mainFile).c_str(),("./files/"+mainFile+".temp").c_str());
-	std::ifstream filein("./files/"+mainFile+".temp");
-    std::ofstream fileout("./files/"+mainFile);
-	std::ofstream mainCode ("./files/_main.cpp");
-	mainCode << "#include <unistd.h>"<< std::endl;
-	mainCode << "#include \"fcntl.h\"" << std::endl;
-	mainCode << "#include <iostream>"<< std::endl;
-	mainCode << "#include \"libFiles/gStatistics.h\""<< std::endl;
-	mainCode << "#include \"libFiles/getRandom.h\"" << std::endl;
-	mainCode << "#define N 4" << std::endl;
-	std::cout << 1 <<std::endl;
-	std::string function_call,definition;
-	std::cout << s<<std::endl;
-	size_t length = s.find("\n");
-	size_t index = s.find("$",0);
-		std::cout <<"index -" <<index<<std::endl;
-	std::cout <<"length" << length<<std::endl;
-	size_t previous = 0;
-	mainCode << "int _main_original(";
 	function_call += "_main_original(";
 	definition += "_main_original(";
-		std::cout << 2<<std::endl;
-	while(index < length && index != std::string::npos){
-			std::cout << index<<std::endl;
-		size_t mid = s.find("-",previous);
-		std::string stype (s.substr(previous,mid-previous));
-		std::string variable (s.substr(mid+1,index-mid -1)); //we don't have to save it
-		std::cout <<"s " <<stype << "v " << variable;
-		if(previous == 0){
-			function_call += "getRandomOfSpecificType<" + stype + ">()";
-			mainCode <<  stype <<" "<< variable;
-			definition += stype + variable;
+	
+	size_t IndexEndInputs = inputs.find("\n");
+	size_t nextIndex = inputs.find("$",0);
+	size_t previousIndex = 0;
+	
+	
+	while(nextIndex < IndexEndInputs){
+
+		size_t separatorTypeAndVariableName = inputs.find("-",previousIndex);
+		std::string type (inputs.substr(previousIndex/*starting point */ ,separatorTypeAndVariableName - previousIndex /* size of type */));
+		std::string variableName (inputs.substr(separatorTypeAndVariableName+1 /*starting point */,nextIndex-separatorTypeAndVariableName -1 /* size of type */)); //we don't have to save it
+
+		if(previousIndex != 0){
+			function_call +=  ", ";
+			definition += ", ";
 		}
-		else{
-			function_call +=  ", getRandomOfSpecificType<" + stype+">()";
-			mainCode <<"," << stype << "" << variable;
-			definition += ','+ stype + variable;
-		}
-		previous = index + 1;
-		index = s.find("$",index + 1);
+		function_call += "getRandomOfSpecificType<" + type + ">()";
+		definition += type +" "+ variableName;
+		previousIndex = nextIndex + 1;
+		nextIndex = inputs.find("$",nextIndex + 1);
 	}
-	mainCode << ");" << std::endl;
 	definition += ")";
 	function_call += ");";
-	std::string line;
-	assert(argc >= 2);
-	while(!filein.eof())
+	declarition = "int " + definition +";"; 
+}
+inline void writeIncludesInNewMainFile(std::ofstream& newMainFile)
+{
+	newMainFile << "#include <unistd.h>"<< std::endl;
+	newMainFile << "#include \"fcntl.h\"" << std::endl;
+	newMainFile << "#include <iostream>"<< std::endl;
+	newMainFile << "#include \"gStatistics.h\""<< std::endl;
+	newMainFile << "#include \"getRandom.h\"" << std::endl;
+}
+
+inline void UpdateOriginalMainFile(std::ifstream& inputOriginalMainFile, std::ofstream& outputOriginalMainFile,std::string& definition)
+{
+	std::string currentLine;
+	while(!inputOriginalMainFile.eof())
 	{
-		std::getline (filein,line);
-		if(line.find("_main_original") != std::string::npos)
-			fileout << line.replace (line.find("_main_original()"),16/*size of _main_original()*/,definition) <<std::endl;
+		std::getline (inputOriginalMainFile,currentLine);
+		if(currentLine.find("_main_original") != std::string::npos)
+			outputOriginalMainFile << currentLine.replace (currentLine.find("_main_original()"),16/*size of _main_original()*/,definition) <<std::endl;
 		else
-			fileout <<line <<std::endl;
+			outputOriginalMainFile <<currentLine <<std::endl;
 	}
-	mainCode << "unsigned long g_statistics::maxLoopBound = ";
-	if(**(argv+2) != 'x')
-		mainCode << *(argv+2);
-	else 
-		mainCode << ULONG_MAX;
-	mainCode << ";" << std::endl;
-	mainCode << "std::map<std::pair<std::string,std::pair<unsigned int,unsigned int>>,std::list<std::list<unsigned long>>> g_statistics::loopBoundMap;";
-	mainCode << "int main(){" << std::endl;
-	mainCode << "for(int i=0;i<"<<*(argv+1)<<";i++){" << std::endl;
-	mainCode << "g_statistics::nextRunning();" << std::endl;
-	mainCode << function_call <<std::endl;
-	mainCode << "}"<< std::endl;
-	mainCode << "int out = open(\"out\", O_WRONLY | O_TRUNC | O_CREAT, S_IRUSR | S_IRGRP | S_IWGRP | S_IWUSR);" <<std::endl;
-	mainCode << "dup2(out,fileno(stdout));" <<std::endl;
-	mainCode << "g_statistics::printResults(std::cout);"<< std::endl;
-	mainCode << "}" ;
-	mainCode.close();
-	filein.close();
-	fileout.close();
-	remove (("./files/"+mainFile+".temp").c_str());
+}
+
+inline void writeNewMainFile(char* maxLoopBound,std::ofstream& newMainFile,char *numRepetitions,std::string& functionCall)
+{
+	newMainFile << "unsigned long g_statistics::maxLoopBound = ";
+	if(!strcmp(maxLoopBound,"0")) //0 instead of - check this line 
+		newMainFile << 2048/*default value*/;
+	else
+		newMainFile << maxLoopBound; 
+	newMainFile << ";" << std::endl;
+	newMainFile << "std::map<std::pair<std::string,std::pair<unsigned int,unsigned int>>,std::list<std::list<unsigned long>>> g_statistics::loopBoundMap;";
+	newMainFile << "int main(){" << std::endl;
+	newMainFile << "for(int i=0;i<"<<numRepetitions<<";i++){" << std::endl;
+	newMainFile << "g_statistics::nextRunning();" << std::endl;
+	newMainFile << functionCall <<std::endl;
+	newMainFile << "}"<< std::endl;
+	newMainFile << "int out = open(\"out\", O_WRONLY | O_TRUNC | O_CREAT, S_IRUSR | S_IRGRP | S_IWGRP | S_IWUSR);" <<std::endl;
+	newMainFile << "dup2(out,fileno(stdout));" <<std::endl;
+	newMainFile << "g_statistics::printResults(std::cout);"<< std::endl; //change this to istream
+	newMainFile << "}" ;
+}
+int main (int argc, char **argv)
+{
+	//opening files
+	std::ifstream inputsFile("./files/temp/tempInputs");
+	std::string inputs = std::string(std::istreambuf_iterator<char>(inputsFile), std::istreambuf_iterator<char>());
+	std::string originalMainFileName =  inputs.substr(inputs.find("\n",0)+1,inputs.find_last_of("-")-1 - inputs.find("\n",0));
+	std::rename(("./files/" + originalMainFileName).c_str(),("./files/"+ originalMainFileName +".temp").c_str());
+	std::ifstream inputOriginalMainFile("./files/"+ originalMainFileName+".temp");
+    std::ofstream outputOriginalMainFile("./files/"+ originalMainFileName);
+	std::ofstream newMainFile ("./files/libFiles/main.cpp");
+	
+	writeIncludesInNewMainFile(newMainFile);
+	
+	std::string functionCall,definition,declarition;
+	createDefinitionAndFunctionCallAndDeclarition(functionCall,definition,declarition,inputs);
+	newMainFile << declarition <<std::endl;
+	
+	assert(argc >= 3); // must have at least two parameters 
+
+	writeNewMainFile(argv[1],newMainFile,argv[2],functionCall);	
+	
+	//update the new original main file
+	UpdateOriginalMainFile(inputOriginalMainFile, outputOriginalMainFile, definition);
+
+	//closing the files
+	inputOriginalMainFile.close();
+	newMainFile.close();
+	outputOriginalMainFile.close();
+	
+	//remove the old originalMain File
+	remove (("./files/"+originalMainFileName+".temp").c_str());
+	
 }

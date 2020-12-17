@@ -1,6 +1,6 @@
 #include "../libFiles/gStatistics.h"
 #include <iostream>
-int _main_original(char   x,long   y)
+int _main_original(char    x, long    y)
 {
 INPUT(char,x)
 INPUT(long , y);
