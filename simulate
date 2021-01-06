@@ -1,7 +1,6 @@
 #!/bin/bash
 InstallDIR="$(cd "$( dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)";
 
-echo $InstallDIR;
 rm "$InstallDIR/files" -rf;
 rm "$InstallDIR/debug" -rf;
 mkdir -p "$InstallDIR/debug";
@@ -9,9 +8,9 @@ mkdir -p  "$InstallDIR/files";
 SAVE=false;
 DEBUG=false;
 VERBOSE=false;
-#MAX_BOUND_LOOP="x";
+MAX_BOUND_LOOP="0";
 DEST="";
-REPETITIONS="x";
+REPETITIONS="20";
 SourceDIR=$(pwd);
 CWD=$(pwd); 
 EXTENIONS=""
@@ -119,16 +118,16 @@ cp -R ./libFiles  ./files/;
 
 #create new main file
 $VERBOSE && echo "update the parameters to the original_main function and create new main file with the function main";
-echo $MAX_BOUND_LOOP $REPETITIONS
+$VERBOSE && echo $MAX_BOUND_LOOP $REPETITIONS
 ./scripts/createMainAndUpdateFile $MAX_BOUND_LOOP $REPETITIONS >> ./debug/_main.cpp;
 
 #remove temp file directory
-#rm -rf ./files/temp
+rm -rf ./files/temp
 
 #compile the files
 cd ./files/;
 $VERBOSE && echo "compile the files";
-eval "$findExtenionForCompiler | xargs g++";
+eval "$findExtenionForCompiler | xargs g++ ";
 
 #running the program
 cd $CWD;

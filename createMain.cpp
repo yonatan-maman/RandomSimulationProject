@@ -1,4 +1,3 @@
-
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -39,6 +38,7 @@ inline void writeIncludesInNewMainFile(std::ofstream& newMainFile)
 	newMainFile << "#include <unistd.h>"<< std::endl;
 	newMainFile << "#include \"fcntl.h\"" << std::endl;
 	newMainFile << "#include <iostream>"<< std::endl;
+	newMainFile << "#include <fstream>"<< std::endl;
 	newMainFile << "#include \"gStatistics.h\""<< std::endl;
 	newMainFile << "#include \"getRandom.h\"" << std::endl;
 }
@@ -64,15 +64,16 @@ inline void writeNewMainFile(char* maxLoopBound,std::ofstream& newMainFile,char 
 	else
 		newMainFile << maxLoopBound; 
 	newMainFile << ";" << std::endl;
-	newMainFile << "std::map<std::pair<std::string,std::pair<unsigned int,unsigned int>>,std::list<std::list<unsigned long>>> g_statistics::loopBoundMap;";
+	newMainFile << "std::map< g_statistics::loopInfo, std::pair<std::list<g_statistics::run>,g_statistics::loopType> > g_statistics::loopBoundMap;" << std::endl;
+	newMainFile << "int g_statistics::runningCount = 0;" << std::endl;
 	newMainFile << "int main(){" << std::endl;
 	newMainFile << "for(int i=0;i<"<<numRepetitions<<";i++){" << std::endl;
-	newMainFile << "g_statistics::nextRunning();" << std::endl;
+	newMainFile << "++(g_statistics::runningCount);" << std::endl;
 	newMainFile << functionCall <<std::endl;
 	newMainFile << "}"<< std::endl;
-	newMainFile << "int out = open(\"out\", O_WRONLY | O_TRUNC | O_CREAT, S_IRUSR | S_IRGRP | S_IWGRP | S_IWUSR);" <<std::endl;
-	newMainFile << "dup2(out,fileno(stdout));" <<std::endl;
-	newMainFile << "g_statistics::printResults(std::cout);"<< std::endl; //change this to istream
+	newMainFile << "std::ofstream out (\"./out\");" << std:: endl;
+	newMainFile << "std::ofstream xml (\"./xml\");" << std:: endl;
+	newMainFile << "g_statistics::printResults(out,xml);"<< std::endl; //change this to istream
 	newMainFile << "}" ;
 }
 int main (int argc, char **argv)

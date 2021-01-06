@@ -2,11 +2,25 @@
 int main()
 {
 	INPUT(char,x)
-	INPUT(long , y);
-	
+	INPUT(unsigned short , y);
+	INPUT(unsigned int , z);
+
 	std::cout << y << "  "<< int(x) <<std::endl;
-	y = 10000000000;
-	while((--y) != 0)
+	for(int i=0;i<10;i++){
+		while((--y) != 0)
+		{
+			//std::cout << y << "  ";
+			//	std::cout <<std::endl;
+
+		}
+	}
+	while((--y)%30 != 0)
+	{
+		//std::cout << y << "  ";
+		//	std::cout <<std::endl;
+
+	}
+	while((--z)%20 != 0)
 	{
 		//std::cout << y << "  ";
 		//	std::cout <<std::endl;

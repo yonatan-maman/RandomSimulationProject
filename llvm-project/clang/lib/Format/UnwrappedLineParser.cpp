@@ -1592,7 +1592,7 @@ void UnwrappedLineParser::parseStructuralElement() {
       // See if the following token should start a new unwrapped line.
       StringRef Text = FormatTok->TokenText;
       bool isInput = false;
-      if(FormatTok->TokenText.str() == "INPUT")
+      if(FormatTok->TokenText.str() == "C2RTL_INPUT")
 		isInput = true;
 	  if(FormatTok->TokenText.str() == "main"){
 			FormatTok->TokenText = "_main_original";
@@ -2388,14 +2388,9 @@ void UnwrappedLineParser::parseForOrWhileLoop() {
 	std::cout << "loop" << std ::endl;;
 	assert(FormatTok->isOneOf(tok::kw_for, tok::kw_while, TT_ForEachMacro) &&
 	 "'for', 'while' or foreach macro expected");
-	 FormatToken * saveTok =  FormatTok ;
 	unsigned int row,column;
 	getRawcolumnLoop(column,row,FormatTok->Tok.getLocation() ,*SM);
-	//FormatTok = nullptr;
-	//std::string s1 = std::string("g_statistics::addRunningLoop(__FILE__ ,")+std::to_string(row)+std::string(",")+ std::to_string(column)+std::string(");");
-	output <<std::endl<<  "g_statistics::addRunningLoop(__FILE__ ,"<< row <<","<<column<<");";
-	//createUnwrappedLineNodeList(s1,helpLexer); 
-	//MYnextToken(saveTok);
+	output <<std::endl<<  "g_statistics::addRunningLoop(__FILE__ ,"<< row <<","<<column<<","<<"\""<<FormatTok->TokenText.str()<<"\""<<");";
 	nextToken();
   // JS' for await ( ...
   if (Style.Language == FormatStyle::LK_JavaScript &&
@@ -2428,19 +2423,28 @@ void UnwrappedLineParser::parseForOrWhileLoop() {
 
 void UnwrappedLineParser::parseDoWhile() {
 		std::cout <<"parseDoWhile" <<std::endl;
-
+	
   assert(FormatTok->Tok.is(tok::kw_do) && "'do' expected");
+  unsigned int row,column;
+  getRawcolumnLoop(column,row,FormatTok->Tok.getLocation() ,*SM);
+  output <<std::endl<<  "g_statistics::addRunningLoop(__FILE__ ,"<< row <<","<<column<<","<<"\""<<FormatTok->TokenText.str()<<"\""<<");";
   nextToken();
   if (FormatTok->Tok.is(tok::l_brace)) {
+	 addUnwrappedLine(); 
+	nextToken();
+	output <<std::endl<< "if(g_statistics::plusplus(__FILE__ ," << row <<","<<column<<"))"<<std::endl<<"break;";
     CompoundStatementIndenter Indenter(this, Style, Line->Level);
     parseBlock(/*MustBeDeclaration=*/false);
     if (Style.BraceWrapping.BeforeWhile)
       addUnwrappedLine();
   } else {
+	output <<"{" <<std::endl << "if(g_statistics::plusplus(__FILE__ ," << row <<","<<column<<")" << std::endl<<"break;";
     addUnwrappedLine();
     ++Line->Level;
     parseStructuralElement();
     --Line->Level;
+    output <<std::endl<< "}";
+
   }
 
   // FIXME: Add error handling.

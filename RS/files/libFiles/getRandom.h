@@ -22,7 +22,7 @@ T getRandomOfSpecificType()
 	else if(IS_SAME(T,int))
 		return rand();
 	else if(IS_SAME(T,unsigned int))
-		return (unsigned int)(rand() + INT_MIN);
+		return (unsigned int)(rand() + INT_MAX);
 	return 0;
 	//else if(IS_SAME(T,long))
 		//case(unsigned long_):

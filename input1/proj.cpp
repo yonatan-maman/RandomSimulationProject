@@ -1,13 +1,12 @@
 #include "proj.h"
 
-#define INPUT(type, id)
 
 int main() {
 	f(20);
+	C2RTL_INPUT(int,a);
 	g();
-	for(int e=0; e<20; e++) {
+	do{
 	       h();
-	}
-	f(50);
+	}while(false);
 	return 0;
 }

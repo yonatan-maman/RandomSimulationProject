@@ -6,4 +6,5 @@ yes | cp -R -rf ./libFiles ./RS/;
 g++ -o createMainAndUpdateFile $DIR/createMain.cpp;
 mv -f $DIR/createMainAndUpdateFile  $DIR/RS/scripts/;
 yes | cp -rf  ./llvm-project/build/bin/clang-format  $DIR/RS/scripts;
+cp -rf ./simulate  $DIR/RS
 #"$DIR/RS/simulate";
