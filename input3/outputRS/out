@@ -1,0 +1,5 @@
+FOR(./proj.cpp,7,1)
+num of runs: 2
+max loop unrolling: 198
+min loop unrolling:103
+avarage  unrolling:150

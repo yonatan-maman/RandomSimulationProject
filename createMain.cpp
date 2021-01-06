@@ -4,6 +4,20 @@
 #include <algorithm>
 #include "assert.h"
 #include "string.h"
+
+static inline std::string removeWhiteSpaces(std::string s)
+{
+	auto start = s.begin();
+    for (;start != s.end(); ++start)
+        if (!isspace(*start))
+			break;
+	auto end = s.end();
+    for (;end != s.begin(); --end)
+        if (!isspace(*end))
+			break;
+	
+    return std::string(start, end);
+}
 inline void createDefinitionAndFunctionCallAndDeclarition(std::string& function_call,std::string& definition, std::string& declarition , std::string& inputs)
 {
 	function_call += "_main_original(";
@@ -25,7 +39,7 @@ inline void createDefinitionAndFunctionCallAndDeclarition(std::string& function_
 			definition += ", ";
 		}
 		function_call += "getRandomOfSpecificType<" + type + ">()";
-		definition += type +" "+ variableName;
+		definition += removeWhiteSpaces(type) +" "+"_"+removeWhiteSpaces(variableName) +"_rs";
 		previousIndex = nextIndex + 1;
 		nextIndex = inputs.find("$",nextIndex + 1);
 	}

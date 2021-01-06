@@ -4,7 +4,7 @@
 #include <map>
 
 
-#define C2RTL_INPUT(type,id)
+#define C2RTL_INPUT(type,id) id = _## id ## _rs
 class g_statistics
 {
 	public:

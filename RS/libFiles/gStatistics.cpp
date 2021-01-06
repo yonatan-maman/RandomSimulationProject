@@ -96,7 +96,7 @@ void g_statistics::printLoopsOutputFile(std::ostream& os)
 		}
 		os << "num of runs: " <<count << std::endl;
 		os << "max loop unrolling: " << maxTimes<< std::endl;
-		os << "min loop unrolling:" <<maxTimes << std::endl;
+		os << "min loop unrolling:" <<minTimes << std::endl;
 		os << "avarage  unrolling:" <<sum/count << std::endl;
 	}
 

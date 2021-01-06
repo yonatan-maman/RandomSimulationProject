@@ -2410,7 +2410,7 @@ void UnwrappedLineParser::parseForOrWhileLoop() {
     parseBlock(/*MustBeDeclaration=*/false,true,true,true);
 	  addUnwrappedLine();
   } else {
-	output <<"{" <<std::endl << "if(g_statistics::plusplus(__FILE__ ," << row <<","<<column<<")" << std::endl<<"break;";
+	output <<"{" <<std::endl << "if(g_statistics::plusplus(__FILE__ ," << row <<","<<column<<"))" << std::endl<<"break;";
     addUnwrappedLine();
     parseStructuralElement();
     addUnwrappedLine();
@@ -2438,7 +2438,7 @@ void UnwrappedLineParser::parseDoWhile() {
     if (Style.BraceWrapping.BeforeWhile)
       addUnwrappedLine();
   } else {
-	output <<"{" <<std::endl << "if(g_statistics::plusplus(__FILE__ ," << row <<","<<column<<")" << std::endl<<"break;";
+	output <<"{" <<std::endl << "if(g_statistics::plusplus(__FILE__ ," << row <<","<<column<<"))" << std::endl<<"break;";
     addUnwrappedLine();
     ++Line->Level;
     parseStructuralElement();

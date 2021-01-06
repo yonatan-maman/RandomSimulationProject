@@ -1,0 +1,25 @@
+<inputs>
+</inputs>
+<loops>
+<numberOfLoops>1</numberOfLoops>
+<loop type ="FOR" file="./proj.cpp" row=" 7" col=" 1" ><count>2</count>
+<min>103</min>
+<max>198</max>
+<avarage>150</avarage>
+<run1>
+<input>i1</input>
+<result>103 /<result>
+<count>1</count>
+<min>103</min>
+<max>103</max>
+<avarage>103</avarage>
+</run1>
+<run2>
+<input>i2</input>
+<result>198 /<result>
+<count>1</count>
+<min>198</min>
+<max>198</max>
+<avarage>198</avarage>
+</run2>
+</loop></loops>
