@@ -96,6 +96,11 @@ int main (int argc, char **argv)
 	std::ifstream inputsFile("./files/temp/tempInputs");
 	std::string inputs = std::string(std::istreambuf_iterator<char>(inputsFile), std::istreambuf_iterator<char>());
 	std::string originalMainFileName =  inputs.substr(inputs.find("\n",0)+1,inputs.find_last_of("-")-1 - inputs.find("\n",0));
+	std::string c2rtlEmptyName =  originalMainFileName.substr(0,originalMainFileName.find_last_of("/")+1) + "c2rtl.h";
+	std::cout <<originalMainFileName<<"-"<<c2rtlEmptyName;
+	std::ofstream c2rtlEmptyFile("./files/"+c2rtlEmptyName);
+	c2rtlEmptyFile << "////emptyFile" <<std::endl;
+	c2rtlEmptyFile.close();
 	std::rename(("./files/" + originalMainFileName).c_str(),("./files/"+ originalMainFileName +".temp").c_str());
 	std::ifstream inputOriginalMainFile("./files/"+ originalMainFileName+".temp");
     std::ofstream outputOriginalMainFile("./files/"+ originalMainFileName);

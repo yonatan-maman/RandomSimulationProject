@@ -9,7 +9,7 @@ unsigned long g_statistics::maxLoopBound = 2048;
 std::map< g_statistics::loopInfo, std::pair<std::list<g_statistics::run>,g_statistics::loopType> > g_statistics::loopBoundMap;
 int g_statistics::runningCount = 0;
 int main(){
-for(int i=0;i<2;i++){
+for(int i=0;i<20;i++){
 ++(g_statistics::runningCount);
 _main_original(getRandomOfSpecificType<unsigned char >());
 }
