@@ -38,7 +38,6 @@ class g_statistics
 	
 	private:
 	static loopType stringToEnum(std::string);
-	static void printInputsXml(std::ostream& xml);
 	static void printLoopsXml(std::ostream& xml);
 	static void printCountMinMaxAvarage(std::ostream& xml,std::list<run> loop);
 	static void printLoopsOutputFile(std::ostream& os);

@@ -1,4 +1,105 @@
+<RandomSimulation>
 <inputs>
+<i1>
+<a>1681692777<a>
+<b>F<b>
+<d>44<d>
+</i1>
+<i2>
+<a>233665123<a>
+<b>®<b>
+<d>-1<d>
+</i2>
+<i3>
+<a>1129566413<a>
+<b>2<b>
+<d>-279<d>
+</i3>
+<i4>
+<a>2001100545<a>
+<b>¾<b>
+<d>10<d>
+</i4>
+<i5>
+<a>1469348094<a>
+<b>š<b>
+<d>-133<d>
+</i5>
+<i6>
+<a>270744729<a>
+<b>(<b>
+<d>97<d>
+</i6>
+<i7>
+<a>1713258270<a>
+<b>£<b>
+<d>-79<d>
+</i7>
+<i8>
+<a>116087764<a>
+<b>*<b>
+<d>-74<d>
+</i8>
+<i9>
+<a>1605908235<a>
+<b>u<b>
+<d>45<d>
+</i9>
+<i10>
+<a>496987743<a>
+<b><<b>
+<d>-50<d>
+</i10>
+<i11>
+<a>1450573622<a>
+<b>S<b>
+<d>-364<d>
+</i11>
+<i12>
+<a>552473416<a>
+<b>Ô<b>
+<d>-61<d>
+</i12>
+<i13>
+<a>2058657199<a>
+<b>³<b>
+<d>-195<d>
+</i13>
+<i14>
+<a>1057418418<a>
+<b>{<b>
+<d>-143<d>
+</i14>
+<i15>
+<a>1797073940<a>
+<b>c<b>
+<d>92<d>
+</i15>
+<i16>
+<a>1343606042<a>
+<b>P<b>
+<d>33<d>
+</i16>
+<i17>
+<a>2118421993<a>
+<b><<b>
+<d>-240<d>
+</i17>
+<i18>
+<a>777210498<a>
+<b>æ<b>
+<d>-239<d>
+</i18>
+<i19>
+<a>1415505363<a>
+<b>Ù<b>
+<d>65<d>
+</i19>
+<i20>
+<a>820697697<a>
+<b>Z<b>
+<d>-349<d>
+</i20>
 </inputs>
 <loops>
 <numberOfLoops>4</numberOfLoops>
@@ -330,171 +431,67 @@
 <max>14</max>
 <avarage>14</avarage>
 </run20>
-</loop><loop type ="FOR" file="./proj.h" row=" 25" col=" 2" ><count>20</count>
-<min>34</min>
+</loop><loop type ="FOR" file="./proj.h" row=" 25" col=" 2" ><count>7</count>
+<min>192</min>
 <max>2049</max>
-<avarage>1008</avarage>
+<avarage>983</avarage>
 <run1>
 <input>i1</input>
-<result>1403 /<result>
+<result>680 /<result>
 <count>1</count>
-<min>1403</min>
-<max>1403</max>
-<avarage>1403</avarage>
+<min>680</min>
+<max>680</max>
+<avarage>680</avarage>
 </run1>
 <run2>
-<input>i2</input>
-<result>363 /<result>
+<input>i4</input>
+<result>2049 /<result>
 <count>1</count>
-<min>363</min>
-<max>363</max>
-<avarage>363</avarage>
+<min>2049</min>
+<max>2049</max>
+<avarage>2049</avarage>
 </run2>
 <run3>
-<input>i3</input>
-<result>1553 /<result>
+<input>i6</input>
+<result>192 /<result>
 <count>1</count>
-<min>1553</min>
-<max>1553</max>
-<avarage>1553</avarage>
+<min>192</min>
+<max>192</max>
+<avarage>192</avarage>
 </run3>
 <run4>
-<input>i4</input>
-<result>1639 /<result>
-<count>1</count>
-<min>1639</min>
-<max>1639</max>
-<avarage>1639</avarage>
-</run4>
-<run5>
-<input>i5</input>
-<result>693 /<result>
-<count>1</count>
-<min>693</min>
-<max>693</max>
-<avarage>693</avarage>
-</run5>
-<run6>
-<input>i6</input>
-<result>659 /<result>
-<count>1</count>
-<min>659</min>
-<max>659</max>
-<avarage>659</avarage>
-</run6>
-<run7>
-<input>i7</input>
-<result>545 /<result>
-<count>1</count>
-<min>545</min>
-<max>545</max>
-<avarage>545</avarage>
-</run7>
-<run8>
-<input>i8</input>
-<result>567 /<result>
-<count>1</count>
-<min>567</min>
-<max>567</max>
-<avarage>567</avarage>
-</run8>
-<run9>
 <input>i9</input>
 <result>2049 /<result>
 <count>1</count>
 <min>2049</min>
 <max>2049</max>
 <avarage>2049</avarage>
-</run9>
-<run10>
-<input>i10</input>
-<result>34 /<result>
-<count>1</count>
-<min>34</min>
-<max>34</max>
-<avarage>34</avarage>
-</run10>
-<run11>
-<input>i11</input>
-<result>352 /<result>
-<count>1</count>
-<min>352</min>
-<max>352</max>
-<avarage>352</avarage>
-</run11>
-<run12>
-<input>i12</input>
-<result>380 /<result>
-<count>1</count>
-<min>380</min>
-<max>380</max>
-<avarage>380</avarage>
-</run12>
-<run13>
-<input>i13</input>
-<result>194 /<result>
-<count>1</count>
-<min>194</min>
-<max>194</max>
-<avarage>194</avarage>
-</run13>
-<run14>
-<input>i14</input>
-<result>2049 /<result>
-<count>1</count>
-<min>2049</min>
-<max>2049</max>
-<avarage>2049</avarage>
-</run14>
-<run15>
+</run4>
+<run5>
 <input>i15</input>
-<result>694 /<result>
+<result>235 /<result>
 <count>1</count>
-<min>694</min>
-<max>694</max>
-<avarage>694</avarage>
-</run15>
-<run16>
+<min>235</min>
+<max>235</max>
+<avarage>235</avarage>
+</run5>
+<run6>
 <input>i16</input>
-<result>2049 /<result>
+<result>509 /<result>
 <count>1</count>
-<min>2049</min>
-<max>2049</max>
-<avarage>2049</avarage>
-</run16>
-<run17>
-<input>i17</input>
-<result>2049 /<result>
-<count>1</count>
-<min>2049</min>
-<max>2049</max>
-<avarage>2049</avarage>
-</run17>
-<run18>
-<input>i18</input>
-<result>656 /<result>
-<count>1</count>
-<min>656</min>
-<max>656</max>
-<avarage>656</avarage>
-</run18>
-<run19>
+<min>509</min>
+<max>509</max>
+<avarage>509</avarage>
+</run6>
+<run7>
 <input>i19</input>
-<result>185 /<result>
+<result>1172 /<result>
 <count>1</count>
-<min>185</min>
-<max>185</max>
-<avarage>185</avarage>
-</run19>
-<run20>
-<input>i20</input>
-<result>2049 /<result>
-<count>1</count>
-<min>2049</min>
-<max>2049</max>
-<avarage>2049</avarage>
-</run20>
-</loop><loop type ="DO WHILE" file="./proj.cpp" row=" 8" col=" 2" ><count>20</count>
+<min>1172</min>
+<max>1172</max>
+<avarage>1172</avarage>
+</run7>
+</loop><loop type ="DO WHILE" file="./proj.cpp" row=" 14" col=" 3" ><count>7</count>
 <min>1</min>
 <max>1</max>
 <avarage>1</avarage>
@@ -507,7 +504,7 @@
 <avarage>1</avarage>
 </run1>
 <run2>
-<input>i2</input>
+<input>i4</input>
 <result>1 /<result>
 <count>1</count>
 <min>1</min>
@@ -515,7 +512,7 @@
 <avarage>1</avarage>
 </run2>
 <run3>
-<input>i3</input>
+<input>i6</input>
 <result>1 /<result>
 <count>1</count>
 <min>1</min>
@@ -523,7 +520,7 @@
 <avarage>1</avarage>
 </run3>
 <run4>
-<input>i4</input>
+<input>i9</input>
 <result>1 /<result>
 <count>1</count>
 <min>1</min>
@@ -531,7 +528,7 @@
 <avarage>1</avarage>
 </run4>
 <run5>
-<input>i5</input>
+<input>i15</input>
 <result>1 /<result>
 <count>1</count>
 <min>1</min>
@@ -539,7 +536,7 @@
 <avarage>1</avarage>
 </run5>
 <run6>
-<input>i6</input>
+<input>i16</input>
 <result>1 /<result>
 <count>1</count>
 <min>1</min>
@@ -547,115 +544,12 @@
 <avarage>1</avarage>
 </run6>
 <run7>
-<input>i7</input>
-<result>1 /<result>
-<count>1</count>
-<min>1</min>
-<max>1</max>
-<avarage>1</avarage>
-</run7>
-<run8>
-<input>i8</input>
-<result>1 /<result>
-<count>1</count>
-<min>1</min>
-<max>1</max>
-<avarage>1</avarage>
-</run8>
-<run9>
-<input>i9</input>
-<result>1 /<result>
-<count>1</count>
-<min>1</min>
-<max>1</max>
-<avarage>1</avarage>
-</run9>
-<run10>
-<input>i10</input>
-<result>1 /<result>
-<count>1</count>
-<min>1</min>
-<max>1</max>
-<avarage>1</avarage>
-</run10>
-<run11>
-<input>i11</input>
-<result>1 /<result>
-<count>1</count>
-<min>1</min>
-<max>1</max>
-<avarage>1</avarage>
-</run11>
-<run12>
-<input>i12</input>
-<result>1 /<result>
-<count>1</count>
-<min>1</min>
-<max>1</max>
-<avarage>1</avarage>
-</run12>
-<run13>
-<input>i13</input>
-<result>1 /<result>
-<count>1</count>
-<min>1</min>
-<max>1</max>
-<avarage>1</avarage>
-</run13>
-<run14>
-<input>i14</input>
-<result>1 /<result>
-<count>1</count>
-<min>1</min>
-<max>1</max>
-<avarage>1</avarage>
-</run14>
-<run15>
-<input>i15</input>
-<result>1 /<result>
-<count>1</count>
-<min>1</min>
-<max>1</max>
-<avarage>1</avarage>
-</run15>
-<run16>
-<input>i16</input>
-<result>1 /<result>
-<count>1</count>
-<min>1</min>
-<max>1</max>
-<avarage>1</avarage>
-</run16>
-<run17>
-<input>i17</input>
-<result>1 /<result>
-<count>1</count>
-<min>1</min>
-<max>1</max>
-<avarage>1</avarage>
-</run17>
-<run18>
-<input>i18</input>
-<result>1 /<result>
-<count>1</count>
-<min>1</min>
-<max>1</max>
-<avarage>1</avarage>
-</run18>
-<run19>
 <input>i19</input>
 <result>1 /<result>
 <count>1</count>
 <min>1</min>
 <max>1</max>
 <avarage>1</avarage>
-</run19>
-<run20>
-<input>i20</input>
-<result>1 /<result>
-<count>1</count>
-<min>1</min>
-<max>1</max>
-<avarage>1</avarage>
-</run20>
+</run7>
 </loop></loops>
+</RandomSimulation>

@@ -3,18 +3,22 @@ num of runs: 20
 max loop unrolling: 20
 min loop unrolling:20
 avarage  unrolling:20
+
 WHILE(./proj.h,14,2)
 num of runs: 20
 max loop unrolling: 14
 min loop unrolling:14
 avarage  unrolling:14
+
 FOR(./proj.h,25,2)
-num of runs: 20
+num of runs: 7
 max loop unrolling: 2049
-min loop unrolling:2049
-avarage  unrolling:1008
-DO WHILE(./proj.cpp,8,2)
-num of runs: 20
+min loop unrolling:192
+avarage  unrolling:983
+
+DO WHILE(./proj.cpp,14,3)
+num of runs: 7
 max loop unrolling: 1
 min loop unrolling:1
 avarage  unrolling:1
+

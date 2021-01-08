@@ -1,0 +1,539 @@
+<RandomSimulation>
+<inputs>
+<i1>
+</i1>
+<i2>
+</i2>
+<i3>
+</i3>
+<i4>
+</i4>
+<i5>
+</i5>
+<i6>
+</i6>
+<i7>
+</i7>
+<i8>
+</i8>
+<i9>
+</i9>
+<i10>
+</i10>
+<i11>
+</i11>
+<i12>
+</i12>
+<i13>
+</i13>
+<i14>
+</i14>
+<i15>
+</i15>
+<i16>
+</i16>
+<i17>
+</i17>
+<i18>
+</i18>
+<i19>
+</i19>
+<i20>
+</i20>
+</inputs>
+<loops>
+<numberOfLoops>3</numberOfLoops>
+<loop type ="FOR" file="./in.cpp" row=" 5" col=" 2" ><count>20</count>
+<min>500</min>
+<max>500</max>
+<avarage>500</avarage>
+<run1>
+<input>i1</input>
+<result>500 /<result>
+<count>1</count>
+<min>500</min>
+<max>500</max>
+<avarage>500</avarage>
+</run1>
+<run2>
+<input>i2</input>
+<result>500 /<result>
+<count>1</count>
+<min>500</min>
+<max>500</max>
+<avarage>500</avarage>
+</run2>
+<run3>
+<input>i3</input>
+<result>500 /<result>
+<count>1</count>
+<min>500</min>
+<max>500</max>
+<avarage>500</avarage>
+</run3>
+<run4>
+<input>i4</input>
+<result>500 /<result>
+<count>1</count>
+<min>500</min>
+<max>500</max>
+<avarage>500</avarage>
+</run4>
+<run5>
+<input>i5</input>
+<result>500 /<result>
+<count>1</count>
+<min>500</min>
+<max>500</max>
+<avarage>500</avarage>
+</run5>
+<run6>
+<input>i6</input>
+<result>500 /<result>
+<count>1</count>
+<min>500</min>
+<max>500</max>
+<avarage>500</avarage>
+</run6>
+<run7>
+<input>i7</input>
+<result>500 /<result>
+<count>1</count>
+<min>500</min>
+<max>500</max>
+<avarage>500</avarage>
+</run7>
+<run8>
+<input>i8</input>
+<result>500 /<result>
+<count>1</count>
+<min>500</min>
+<max>500</max>
+<avarage>500</avarage>
+</run8>
+<run9>
+<input>i9</input>
+<result>500 /<result>
+<count>1</count>
+<min>500</min>
+<max>500</max>
+<avarage>500</avarage>
+</run9>
+<run10>
+<input>i10</input>
+<result>500 /<result>
+<count>1</count>
+<min>500</min>
+<max>500</max>
+<avarage>500</avarage>
+</run10>
+<run11>
+<input>i11</input>
+<result>500 /<result>
+<count>1</count>
+<min>500</min>
+<max>500</max>
+<avarage>500</avarage>
+</run11>
+<run12>
+<input>i12</input>
+<result>500 /<result>
+<count>1</count>
+<min>500</min>
+<max>500</max>
+<avarage>500</avarage>
+</run12>
+<run13>
+<input>i13</input>
+<result>500 /<result>
+<count>1</count>
+<min>500</min>
+<max>500</max>
+<avarage>500</avarage>
+</run13>
+<run14>
+<input>i14</input>
+<result>500 /<result>
+<count>1</count>
+<min>500</min>
+<max>500</max>
+<avarage>500</avarage>
+</run14>
+<run15>
+<input>i15</input>
+<result>500 /<result>
+<count>1</count>
+<min>500</min>
+<max>500</max>
+<avarage>500</avarage>
+</run15>
+<run16>
+<input>i16</input>
+<result>500 /<result>
+<count>1</count>
+<min>500</min>
+<max>500</max>
+<avarage>500</avarage>
+</run16>
+<run17>
+<input>i17</input>
+<result>500 /<result>
+<count>1</count>
+<min>500</min>
+<max>500</max>
+<avarage>500</avarage>
+</run17>
+<run18>
+<input>i18</input>
+<result>500 /<result>
+<count>1</count>
+<min>500</min>
+<max>500</max>
+<avarage>500</avarage>
+</run18>
+<run19>
+<input>i19</input>
+<result>500 /<result>
+<count>1</count>
+<min>500</min>
+<max>500</max>
+<avarage>500</avarage>
+</run19>
+<run20>
+<input>i20</input>
+<result>500 /<result>
+<count>1</count>
+<min>500</min>
+<max>500</max>
+<avarage>500</avarage>
+</run20>
+</loop><loop type ="FOR" file="./in.cpp" row=" 9" col=" 2" ><count>20</count>
+<min>88</min>
+<max>110</max>
+<avarage>100</avarage>
+<run1>
+<input>i1</input>
+<result>98 /<result>
+<count>1</count>
+<min>98</min>
+<max>98</max>
+<avarage>98</avarage>
+</run1>
+<run2>
+<input>i2</input>
+<result>107 /<result>
+<count>1</count>
+<min>107</min>
+<max>107</max>
+<avarage>107</avarage>
+</run2>
+<run3>
+<input>i3</input>
+<result>105 /<result>
+<count>1</count>
+<min>105</min>
+<max>105</max>
+<avarage>105</avarage>
+</run3>
+<run4>
+<input>i4</input>
+<result>103 /<result>
+<count>1</count>
+<min>103</min>
+<max>103</max>
+<avarage>103</avarage>
+</run4>
+<run5>
+<input>i5</input>
+<result>97 /<result>
+<count>1</count>
+<min>97</min>
+<max>97</max>
+<avarage>97</avarage>
+</run5>
+<run6>
+<input>i6</input>
+<result>99 /<result>
+<count>1</count>
+<min>99</min>
+<max>99</max>
+<avarage>99</avarage>
+</run6>
+<run7>
+<input>i7</input>
+<result>101 /<result>
+<count>1</count>
+<min>101</min>
+<max>101</max>
+<avarage>101</avarage>
+</run7>
+<run8>
+<input>i8</input>
+<result>96 /<result>
+<count>1</count>
+<min>96</min>
+<max>96</max>
+<avarage>96</avarage>
+</run8>
+<run9>
+<input>i9</input>
+<result>88 /<result>
+<count>1</count>
+<min>88</min>
+<max>88</max>
+<avarage>88</avarage>
+</run9>
+<run10>
+<input>i10</input>
+<result>99 /<result>
+<count>1</count>
+<min>99</min>
+<max>99</max>
+<avarage>99</avarage>
+</run10>
+<run11>
+<input>i11</input>
+<result>101 /<result>
+<count>1</count>
+<min>101</min>
+<max>101</max>
+<avarage>101</avarage>
+</run11>
+<run12>
+<input>i12</input>
+<result>100 /<result>
+<count>1</count>
+<min>100</min>
+<max>100</max>
+<avarage>100</avarage>
+</run12>
+<run13>
+<input>i13</input>
+<result>95 /<result>
+<count>1</count>
+<min>95</min>
+<max>95</max>
+<avarage>95</avarage>
+</run13>
+<run14>
+<input>i14</input>
+<result>106 /<result>
+<count>1</count>
+<min>106</min>
+<max>106</max>
+<avarage>106</avarage>
+</run14>
+<run15>
+<input>i15</input>
+<result>98 /<result>
+<count>1</count>
+<min>98</min>
+<max>98</max>
+<avarage>98</avarage>
+</run15>
+<run16>
+<input>i16</input>
+<result>110 /<result>
+<count>1</count>
+<min>110</min>
+<max>110</max>
+<avarage>110</avarage>
+</run16>
+<run17>
+<input>i17</input>
+<result>101 /<result>
+<count>1</count>
+<min>101</min>
+<max>101</max>
+<avarage>101</avarage>
+</run17>
+<run18>
+<input>i18</input>
+<result>96 /<result>
+<count>1</count>
+<min>96</min>
+<max>96</max>
+<avarage>96</avarage>
+</run18>
+<run19>
+<input>i19</input>
+<result>103 /<result>
+<count>1</count>
+<min>103</min>
+<max>103</max>
+<avarage>103</avarage>
+</run19>
+<run20>
+<input>i20</input>
+<result>110 /<result>
+<count>1</count>
+<min>110</min>
+<max>110</max>
+<avarage>110</avarage>
+</run20>
+</loop><loop type ="FOR" file="./in.cpp" row=" 13" col=" 2" ><count>20</count>
+<min>14</min>
+<max>21</max>
+<avarage>18</avarage>
+<run1>
+<input>i1</input>
+<result>18 /<result>
+<count>1</count>
+<min>18</min>
+<max>18</max>
+<avarage>18</avarage>
+</run1>
+<run2>
+<input>i2</input>
+<result>18 /<result>
+<count>1</count>
+<min>18</min>
+<max>18</max>
+<avarage>18</avarage>
+</run2>
+<run3>
+<input>i3</input>
+<result>21 /<result>
+<count>1</count>
+<min>21</min>
+<max>21</max>
+<avarage>21</avarage>
+</run3>
+<run4>
+<input>i4</input>
+<result>17 /<result>
+<count>1</count>
+<min>17</min>
+<max>17</max>
+<avarage>17</avarage>
+</run4>
+<run5>
+<input>i5</input>
+<result>17 /<result>
+<count>1</count>
+<min>17</min>
+<max>17</max>
+<avarage>17</avarage>
+</run5>
+<run6>
+<input>i6</input>
+<result>17 /<result>
+<count>1</count>
+<min>17</min>
+<max>17</max>
+<avarage>17</avarage>
+</run6>
+<run7>
+<input>i7</input>
+<result>21 /<result>
+<count>1</count>
+<min>21</min>
+<max>21</max>
+<avarage>21</avarage>
+</run7>
+<run8>
+<input>i8</input>
+<result>15 /<result>
+<count>1</count>
+<min>15</min>
+<max>15</max>
+<avarage>15</avarage>
+</run8>
+<run9>
+<input>i9</input>
+<result>18 /<result>
+<count>1</count>
+<min>18</min>
+<max>18</max>
+<avarage>18</avarage>
+</run9>
+<run10>
+<input>i10</input>
+<result>21 /<result>
+<count>1</count>
+<min>21</min>
+<max>21</max>
+<avarage>21</avarage>
+</run10>
+<run11>
+<input>i11</input>
+<result>19 /<result>
+<count>1</count>
+<min>19</min>
+<max>19</max>
+<avarage>19</avarage>
+</run11>
+<run12>
+<input>i12</input>
+<result>15 /<result>
+<count>1</count>
+<min>15</min>
+<max>15</max>
+<avarage>15</avarage>
+</run12>
+<run13>
+<input>i13</input>
+<result>18 /<result>
+<count>1</count>
+<min>18</min>
+<max>18</max>
+<avarage>18</avarage>
+</run13>
+<run14>
+<input>i14</input>
+<result>17 /<result>
+<count>1</count>
+<min>17</min>
+<max>17</max>
+<avarage>17</avarage>
+</run14>
+<run15>
+<input>i15</input>
+<result>20 /<result>
+<count>1</count>
+<min>20</min>
+<max>20</max>
+<avarage>20</avarage>
+</run15>
+<run16>
+<input>i16</input>
+<result>20 /<result>
+<count>1</count>
+<min>20</min>
+<max>20</max>
+<avarage>20</avarage>
+</run16>
+<run17>
+<input>i17</input>
+<result>18 /<result>
+<count>1</count>
+<min>18</min>
+<max>18</max>
+<avarage>18</avarage>
+</run17>
+<run18>
+<input>i18</input>
+<result>20 /<result>
+<count>1</count>
+<min>20</min>
+<max>20</max>
+<avarage>20</avarage>
+</run18>
+<run19>
+<input>i19</input>
+<result>16 /<result>
+<count>1</count>
+<min>16</min>
+<max>16</max>
+<avarage>16</avarage>
+</run19>
+<run20>
+<input>i20</input>
+<result>14 /<result>
+<count>1</count>
+<min>14</min>
+<max>14</max>
+<avarage>14</avarage>
+</run20>
+</loop></loops>
+</RandomSimulation>

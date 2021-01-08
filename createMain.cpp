@@ -18,6 +18,47 @@ static inline std::string removeWhiteSpaces(std::string s)
 	
     return std::string(start, end);
 }
+
+
+
+
+
+
+inline void createRunMainOriginalFunction(std::string& function_call_main_original , std::string& inputs,std::string& runMainOriginalFunctionDefinition,std::string& function_call_run_main)
+{
+	runMainOriginalFunctionDefinition = "void _runMainOriginalFunctionAndPrintInput(std::ofstream& xml";
+	std::string runMainOriginalFunctionDefinitionBody = "xml<<\"<i\"<<g_statistics::runningCount<<\">\"<<std::endl;\nxml"; 
+	function_call_run_main = "_runMainOriginalFunctionAndPrintInput(xml";
+
+	size_t IndexEndInputs = inputs.find("\n");
+	size_t nextIndex = inputs.find("$",0);
+	size_t previousIndex = 0;
+	
+	
+	while(nextIndex < IndexEndInputs){
+
+		size_t separatorTypeAndVariableName = inputs.find("-",previousIndex);
+		std::string type (inputs.substr(previousIndex/*starting point */ ,separatorTypeAndVariableName - previousIndex /* size of type */));
+		std::string variableName (inputs.substr(separatorTypeAndVariableName+1 /*starting point */,nextIndex-separatorTypeAndVariableName -1 /* size of type */)); 
+		function_call_run_main += ", getRandomOfSpecificType<" + type + ">()";
+		runMainOriginalFunctionDefinition += ", " + removeWhiteSpaces(type) +" "+removeWhiteSpaces(variableName);
+		runMainOriginalFunctionDefinitionBody += "<< \"<" + removeWhiteSpaces(variableName)+">\"<<"+removeWhiteSpaces(variableName)+"<< \"<" + removeWhiteSpaces(variableName)+ ">\" <<std::endl";
+		
+		previousIndex = nextIndex + 1;
+		nextIndex = inputs.find("$",nextIndex + 1);
+	}
+	runMainOriginalFunctionDefinitionBody += ";\n";
+	runMainOriginalFunctionDefinitionBody += "xml<<\"</i\"<<+g_statistics::runningCount<<\">\"<<std::endl;\n"+function_call_main_original+"\n"; 
+	function_call_run_main += ");";
+	runMainOriginalFunctionDefinition += ")\n{\n" + runMainOriginalFunctionDefinitionBody + ";" + "\n}\n";
+}
+
+
+
+
+
+
+
 inline void createDefinitionAndFunctionCallAndDeclarition(std::string& function_call,std::string& definition, std::string& declarition , std::string& inputs)
 {
 	function_call += "_main_original(";
@@ -38,7 +79,7 @@ inline void createDefinitionAndFunctionCallAndDeclarition(std::string& function_
 			function_call +=  ", ";
 			definition += ", ";
 		}
-		function_call += "getRandomOfSpecificType<" + type + ">()";
+		function_call += removeWhiteSpaces(variableName);
 		definition += removeWhiteSpaces(type) +" "+"_"+removeWhiteSpaces(variableName) +"_rs";
 		previousIndex = nextIndex + 1;
 		nextIndex = inputs.find("$",nextIndex + 1);
@@ -81,13 +122,17 @@ inline void writeNewMainFile(char* maxLoopBound,std::ofstream& newMainFile,char 
 	newMainFile << "std::map< g_statistics::loopInfo, std::pair<std::list<g_statistics::run>,g_statistics::loopType> > g_statistics::loopBoundMap;" << std::endl;
 	newMainFile << "int g_statistics::runningCount = 0;" << std::endl;
 	newMainFile << "int main(){" << std::endl;
+	newMainFile << "std::ofstream out (\"./out\");" << std:: endl;
+	newMainFile << "std::ofstream xml (\"./xml\");" << std:: endl;
+	newMainFile << "xml<<\"<RandomSimulation>\"<<std::endl;" << std:: endl;
+	newMainFile << "xml<<\"<inputs>\"<<std::endl;" << std:: endl;
 	newMainFile << "for(int i=0;i<"<<numRepetitions<<";i++){" << std::endl;
 	newMainFile << "++(g_statistics::runningCount);" << std::endl;
 	newMainFile << functionCall <<std::endl;
 	newMainFile << "}"<< std::endl;
-	newMainFile << "std::ofstream out (\"./out\");" << std:: endl;
-	newMainFile << "std::ofstream xml (\"./xml\");" << std:: endl;
-	newMainFile << "g_statistics::printResults(out,xml);"<< std::endl; //change this to istream
+	newMainFile << "xml<<\"</inputs>\"<<std::endl;" << std:: endl;
+	newMainFile << "g_statistics::printResults(out,xml);"<< std::endl;
+	newMainFile << "xml<<\"</RandomSimulation>\"<<std::endl;" << std:: endl;
 	newMainFile << "}" ;
 }
 int main (int argc, char **argv)
@@ -108,13 +153,19 @@ int main (int argc, char **argv)
 	
 	writeIncludesInNewMainFile(newMainFile);
 	
-	std::string functionCall,definition,declarition;
+	std::string functionCall,definition,declarition,runMainOriginalFunctionDefinition,function_call_run_main;
+	
 	createDefinitionAndFunctionCallAndDeclarition(functionCall,definition,declarition,inputs);
+	createRunMainOriginalFunction(functionCall,inputs,runMainOriginalFunctionDefinition,function_call_run_main);
+	
 	newMainFile << declarition <<std::endl;
+		
+	newMainFile << runMainOriginalFunctionDefinition << std::endl;
+	
 	
 	assert(argc >= 3); // must have at least two parameters 
 
-	writeNewMainFile(argv[1],newMainFile,argv[2],functionCall);	
+	writeNewMainFile(argv[1],newMainFile,argv[2],function_call_run_main);	
 	
 	//update the new original main file
 	UpdateOriginalMainFile(inputOriginalMainFile, outputOriginalMainFile, definition);

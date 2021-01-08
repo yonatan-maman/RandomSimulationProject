@@ -54,22 +54,9 @@ bool g_statistics::plusplus(std::string fileName,unsigned int loopLine,unsigned 
 void g_statistics::printResults(std::ostream& os, std::ostream& xml)
 {
 	printLoopsOutputFile(os);
-	printInputsXml(xml);
 	printLoopsXml(xml);
 }
-void g_statistics::printInputsXml(std::ostream& xml)
-{
-		xml << "<inputs>" << std:: endl;
-		/*int i=1;
-		for (auto itInput=m_Inputs_Cont.begin(); itInput!=m_Inputs_Cont.end(); ++itInput){
-			xml << "<input" <<i<<">" << std::endl;
-			for(auto it=itInput->begin();it != itInput->end();it++ )
-				xml <<"<" << it->name << " type = " << it->type << ">"<< it->value <<"<" << it->name << ">" << std::endl;
-			xml << "</input" <<i<<">" << std::endl;
-			i++;
-		}*/
-		xml << "</inputs>" << std::endl;
-}
+
 void g_statistics::printLoopsXml(std::ostream& xml)
 {
 		xml << "<loops>" << std:: endl;
@@ -98,6 +85,7 @@ void g_statistics::printLoopsOutputFile(std::ostream& os)
 		os << "max loop unrolling: " << maxTimes<< std::endl;
 		os << "min loop unrolling:" <<minTimes << std::endl;
 		os << "avarage  unrolling:" <<sum/count << std::endl;
+		os << std::endl;
 	}
 
 

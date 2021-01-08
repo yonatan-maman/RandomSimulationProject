@@ -1,0 +1,18 @@
+FOR(./in.cpp,5,2)
+num of runs: 20
+max loop unrolling: 500
+min loop unrolling:500
+avarage  unrolling:500
+
+FOR(./in.cpp,9,2)
+num of runs: 20
+max loop unrolling: 110
+min loop unrolling:88
+avarage  unrolling:100
+
+FOR(./in.cpp,13,2)
+num of runs: 20
+max loop unrolling: 21
+min loop unrolling:14
+avarage  unrolling:18
+
