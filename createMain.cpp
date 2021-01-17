@@ -42,7 +42,7 @@ inline void createRunMainOriginalFunction(std::string& function_call_main_origin
 		std::string variableName (inputs.substr(separatorTypeAndVariableName+1 /*starting point */,nextIndex-separatorTypeAndVariableName -1 /* size of type */)); 
 		function_call_run_main += ", getRandomOfSpecificType<" + type + ">()";
 		runMainOriginalFunctionDefinition += ", " + removeWhiteSpaces(type) +" "+removeWhiteSpaces(variableName);
-		runMainOriginalFunctionDefinitionBody += "<< \"<" + removeWhiteSpaces(variableName)+">\"<<"+removeWhiteSpaces(variableName)+"<< \"<" + removeWhiteSpaces(variableName)+ ">\" <<std::endl";
+		runMainOriginalFunctionDefinitionBody += "<< \"<" + removeWhiteSpaces(variableName)+">\"<<"+removeWhiteSpaces(variableName)+"<< \"</" + removeWhiteSpaces(variableName)+ ">\" <<std::endl";
 		
 		previousIndex = nextIndex + 1;
 		nextIndex = inputs.find("$",nextIndex + 1);
