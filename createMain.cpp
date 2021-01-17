@@ -122,8 +122,8 @@ inline void writeNewMainFile(char* maxLoopBound,std::ofstream& newMainFile,char 
 	newMainFile << "std::map< g_statistics::loopInfo, std::pair<std::list<g_statistics::run>,g_statistics::loopType> > g_statistics::loopBoundMap;" << std::endl;
 	newMainFile << "int g_statistics::runningCount = 0;" << std::endl;
 	newMainFile << "int main(){" << std::endl;
-	newMainFile << "std::ofstream out (\"./out\");" << std:: endl;
-	newMainFile << "std::ofstream xml (\"./xml\");" << std:: endl;
+	newMainFile << "std::ofstream out (\"./out.txt\");" << std:: endl;
+	newMainFile << "std::ofstream xml (\"./out.xml\");" << std:: endl;
 	newMainFile << "xml<<\"<RandomSimulation>\"<<std::endl;" << std:: endl;
 	newMainFile << "xml<<\"<inputs>\"<<std::endl;" << std:: endl;
 	newMainFile << "for(int i=0;i<"<<numRepetitions<<";i++){" << std::endl;
