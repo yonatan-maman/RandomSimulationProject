@@ -5,6 +5,8 @@
 
 
 #define C2RTL_INPUT(type,id) id = _## id ## _rs
+#define C2RTL_OUTPUT(type,id) 
+
 class g_statistics
 {
 	public:
