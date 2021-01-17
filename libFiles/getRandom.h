@@ -16,7 +16,7 @@ T getRandomOfSpecificType()
 	else if(IS_SAME(T,unsigned char))
 		return rand()%(1+CHAR_MAX-CHAR_MIN) + 0;
 	else if(IS_SAME(T,short))
-		return (short)rand()% (SCHAR_MAX-SCHAR_MIN) + SCHAR_MIN;
+		return (short)rand()% (SHRT_MAX-SHRT_MIN) + SHRT_MIN;
 	else if(IS_SAME(T,unsigned short))
 		return (unsigned short)rand()% (SCHAR_MAX-SCHAR_MIN) + 0;
 	else if(IS_SAME(T,int))
