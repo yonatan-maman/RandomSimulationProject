@@ -120,7 +120,7 @@ void g_statistics::printFullInformationForRunning(std::ostream& xml,std::list<ru
 			minTimes = MIN(*itLoopCalling,minTimes);
 			xml << *itLoopCalling << " ";
 		}
-		xml << "/<result>"<<std::endl;
+		xml << "</result>"<<std::endl;
 		xml << "<count>" <<count<<"</count>" << std::endl;
 		xml << "<min>" <<minTimes<<"</min>" << std::endl;
 		xml << "<max>" <<maxTimes<<"</max>" << std::endl;
