@@ -1,0 +1,18 @@
+A tool to simulate the loops in the program. Its output is two files in one directory named "otputRS":
+	- out.txt - contains summary of statistics about the unrolling number for each loop in the program.
+	- out.tml - expanded output which contains for expanded statistics about the unrolling number for each loop and the inputs which cause to each unrolling number result.
+
+Options:
+      --input |-i             -   path to the input files directory, must be a path to a directory. Default input files directory is the working directory (pwd)
+      --output |-o         -   path to the output files directory, must be a path to a directory. Default output directory is the input directory or if doesn't exist - pwd
+      --save |-s              -   adding to the output directory the edited files that we created in the program
+      --maxBound |-m -   define the max number of the unrolling times loop, after this number of iteretion the program exit from the loop and continue. Default value is 2048
+      --debug |-d         -   save some debugs files in the entry directory RS/debug
+      --verbose |-v       -   details what this script do in each stage
+      --repetitions |-r   -   the number of repetitions that the we run the program with diffrent inputs each repetition.Default value is 20
+      --extenions |-e    -    the code files' extenions. if you run this program in directory that contains files with diffrent extenions from cpp and h you have to declear this without spaces. for example: -e h,hpp,c,cpp.
+      --help|-h              -    show this explaining
+    Arguments:
+       you don't have to write arguments
+
+hope this simulate tool will help you
