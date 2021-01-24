@@ -21,8 +21,8 @@ EXTENIONS=""
 while :; do
        case $1 in
            -h|-\?|--help)
-               echo "A tool to simulate the loops in the program.Its output is xml which contain the times that the loop has executed with a rondomally inputs.You have to give this tool an input program with the flag \"--input = example_directory/example/1/2/3/ \".  you can choose the destinion directory with the flag\"--dest = example_directory/example/1/2/3/ \". you also able to save the files of the program with --save-files."    
-               exit
+               cat ./scripts/help.txt
+	       exit
                ;;
            --input |-i )
 				shift
