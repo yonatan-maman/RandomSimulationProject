@@ -21,7 +21,7 @@ EXTENIONS=""
 while :; do
        case $1 in
            -h|-\?|--help)
-               cat ./scripts/help.txt
+               cat $InstallDIR/scripts/help.txt
 	       exit
                ;;
            --input |-i )
@@ -60,6 +60,8 @@ while :; do
                ;;
            -?*)
                printf 'WARN: Unknown option (ignored): %s\n' "$1" >&2
+               cat $InstallDIR/scripts/help.txt
+               exit
                ;;
            *)               # Default case: No more options, so break out of the loop.
                break

@@ -13,24 +13,28 @@ password:  rsProject123
 
 cd RandomSimulationProject/llvm-project
 
-3)Then, make the directory to build and compile the files and go into this directory:
+3) you should upgrade your gcc version
+
+export CC=`which gcc`
+
+4)Then, make the directory to build and compile the files and go into this directory:
 
 mkdir build
 cd build
 
-3)After this, you should build the makefiles using cmake:
+5)After this, you should build the makefiles using cmake(3.13.4):
 
 cmake -DLLVM_ENABLE_PROJECTS=clang -G "Unix Makefiles" ../llvm
 
-4)Then, you should compile the files:
+5)Then, you should compile the files:
 
 make clang-format
 
-5)After this, you should compile and create the libaries and the scripts we need to run simulate, so you need go to the main directory and run this script:
+6)After this, you should compile and create the libaries and the scripts we need to run simulate, so you need go to the main directory and run this script:
 
 cd ../../
 ./createProject
 
-6)Then, everything is ready so you can run this for other explainings:
+7)Then, everything is ready so you can run this for other explainings:
 
 ./RS/simulate --help
